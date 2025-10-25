@@ -11,7 +11,7 @@ def filter_metadata(docs: List[Document])-> List[Document]:
         source = doc.metadata["source"]
         page_label=doc.metadata["page_label"]
         filtered_docs.append(Document(page_content=doc.page_content,
-                                      metadata={"source": source, "page_label": page_label}))
+                                      metadata={"source": source, "page_number": page_label}))
     return filtered_docs
 
 
@@ -43,5 +43,4 @@ def initiate_embedding(texts="",model_name="all-MiniLM-L6-v2"):
   except Exception as e:
     print("An error occurred:")
     traceback.print_exc()
-
 

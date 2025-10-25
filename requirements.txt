@@ -9,5 +9,7 @@ langchain-openai==0.3.24
 langchain-community==0.3.26
 semantic-chunkers
 chromadb
+langchain_groq
+langchain_core
 -e .
 

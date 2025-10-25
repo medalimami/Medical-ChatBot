@@ -1,4 +1,4 @@
-from vectormanager import VectorDBManager
+from src.components.vectormanager import VectorDBManager
 from src.utils import initiate_embedding
 import traceback
 
@@ -7,8 +7,6 @@ import traceback
 class RAGretriever:
   def __init__(self,vector_store:VectorDBManager):
     self.vector_store = vector_store
-
-
 
   def retrieve(self, query: str, top_k: int = 5, score_threshold: float = 0.0):
     print(f"Retrieving documents for query: '{query}'")
