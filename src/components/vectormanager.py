@@ -29,3 +29,20 @@ class VectorDBManager:
             print(f"Vector database initiated successfully.\ndatabase path: {self.vectordb_path}\ncollection name: {self.collection_name}")
         except Exception as e:
             traceback.print_exc()
+
+    def add_documents_to_collection(self, chunks, embedded_chunks):
+        try:
+            print("Adding documents to vector database...")
+            ids = []
+            documents = []
+            embeddings = []
+            metadatas = []
+            for i, (chunk, emb_chunk) in enumerate(zip(chunks, embedded_chunks)): ids.append(f"doc_{uuid4().hex[:8]}_{i}")
+            documents.append(' '.join(chunk.splits))
+            embeddings.append(emb_chunk)
+            metadatas.append(chunk.metadata)
+            self.collection.add(ids=ids, documents=documents, embeddings=embeddings, metadatas=metadatas)
+            print("Documents added to vector database successfully.")
+        except Exception as E:
+            print((f"\nError occured while adding documents to vector database: \n{E}"))
+            traceback.print_exc()
